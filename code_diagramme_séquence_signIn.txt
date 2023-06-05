@@ -1,0 +1,33 @@
+@startuml
+actor utilisateur
+
+title Séquence de connexion
+
+activate utilisateur
+
+utilisateur -> site : Fait défiler le site
+
+site -> utilisateur : Affiche le bouton de connexion
+
+utilisateur -> site : Clique sur le bouton de connexion
+
+site -> utilisateur : Affiche la page de connexion
+
+utilisateur -> site : Saisit l'email et le mot de passe
+
+site -> serveur : Vérifie les informations d'identification
+
+activate serveur
+
+serveur -> site : Renvoie une réponse de vérification
+
+site -> utilisateur : Redirige vers le compte utilisateur
+
+alt Email ou mot de passe incorrect
+    utilisateur -> site : Affiche un message d'erreur
+else
+    utilisateur -> site : Redirige vers le compte utilisateur
+end
+
+deactivate serveur
+@enduml
